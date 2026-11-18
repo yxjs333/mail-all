@@ -5,7 +5,7 @@
 服务器上直接执行：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/SIJULY/mail-all/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/yxjs333/mail-all/main/install.sh)
 ```
 
 如果你已经先把仓库拉到本地，也可以执行：
