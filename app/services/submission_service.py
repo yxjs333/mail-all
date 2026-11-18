@@ -89,7 +89,7 @@ class SubmissionSession:
         await self.writer.drain()
 
     async def handle(self):
-        await self.send("220 SijulyMail submission ready")
+        await self.send("220 Red-Mail submission ready")
         while True:
             line = await self.reader.readline()
             if not line:
@@ -142,7 +142,7 @@ class SubmissionSession:
                 await self.send("502 Command not implemented")
 
     async def ehlo(self):
-        lines = ["250-SijulyMail"]
+        lines = ["250-Red-Mail"]
         if not self.tls_active and self.tls_context is not None:
             lines.append("250-STARTTLS")
         lines.append("250-AUTH PLAIN LOGIN")

@@ -134,7 +134,7 @@ def build_rfc822(msg: dict) -> bytes:
     attachments = msg.get("attachments") or []
     body_bytes = body.encode("utf-8", errors="replace")
     if attachments:
-        boundary = "===============SijulyMailPart=="
+        boundary = "===============Red-MailPart=="
         lines.append(f'Content-Type: multipart/mixed; boundary="{boundary}"')
         out = "\r\n".join(lines) + "\r\n\r\n"
         main_type = "text/html" if "html" in body_type else "text/plain"
@@ -649,7 +649,7 @@ class IMAPSession:
         return self.user_email is not None
 
     async def handle(self):
-        await self.send_line(f"* OK [CAPABILITY {self.capability()}] SijulyMail IMAP ready")
+        await self.send_line(f"* OK [CAPABILITY {self.capability()}] Red-Mail IMAP ready")
         while True:
             if self.auth_pending is not None:
                 # AUTHENTICATE 交互：下一行是 base64 数据（或 * 取消）
@@ -1011,7 +1011,7 @@ class IMAPSession:
             await self.send_line(f"{tag} NO Unsupported authentication mechanism")
             return True
         if cmd == "LOGOUT":
-            await self.send_line("* BYE SijulyMail logging out")
+            await self.send_line("* BYE Red-Mail logging out")
             await self.send_line(f"{tag} OK LOGOUT completed")
             return False
         if cmd == "NOOP":
